@@ -1,21 +1,24 @@
 package com.lab.persistence.model;
 
+public class TestModel {
 
-public class TestModel
-{
+    private String table;
 
-  private String table;
+    private String propiedad;
 
+    public String getPropiedad() {
+        return propiedad;
+    }
 
+    public void setPropiedad(String propiedad) {
+        this.propiedad = propiedad;
+    }
 
-  public String getTable()
-  {
-    return table;
-  }
+    public String getTable() {
+        return table;
+    }
 
-
-  public void setTable(String table)
-  {
-    this.table = table;
-  }
+    public void setTable(String table) {
+        this.table = table;
+    }
 }

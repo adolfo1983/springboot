@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute'])
+var app = angular.module('app', ['ngRoute']); //Hace referencia al "app" del index
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
   $locationProvider)
@@ -6,12 +6,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
 //    $locationProvider.html5Mode(true);
 
 
-    $routeProvider.otherwise(
+    $routeProvider.otherwise( //Carga la página si no encuentra la URL que se le indica
     {
       redirectTo: '/'
     })
 
-    .when('/pagina1',
+    .when('/pagina1',    //Carga la URL con el template y el controlador asociado
     {
       templateUrl: GBL_COFG.urlTemplate('pagina1.html'),
       controller: 'ng-app-controller-template1'
@@ -38,7 +38,7 @@ app.directive('apploading', ['$http', function ($http)
 
         scope.$watch(scope.isLoading, function (v)
         {
-          console.log(JSON.stringify(elm) + ' ' + JSON.stringify(attrs))
+          //console.log(JSON.stringify(elm) + ' ' + JSON.stringify(attrs))
           if (v)
           {
             elm[0].classList.add('appLoading');

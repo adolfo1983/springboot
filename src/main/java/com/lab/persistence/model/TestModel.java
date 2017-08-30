@@ -3,7 +3,6 @@ package com.lab.persistence.model;
 public class TestModel {
 
     private String table;
-
     private String propiedad;
 
     public String getPropiedad() {

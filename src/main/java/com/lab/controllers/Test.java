@@ -26,10 +26,7 @@ public class Test
                   method = RequestMethod.POST,
                   produces = MediaType.APPLICATION_JSON_VALUE)
   public List<TestModel> test(@RequestBody TestModel obj) throws Exception
-  {
-      System.out.println(obj.getTable());
-      System.out.println(obj.getPropiedad());
-      
+  {   
     List<TestModel> x = iService.testService(obj);
 
     return x;

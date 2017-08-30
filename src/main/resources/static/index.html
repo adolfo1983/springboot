@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="app"> <!--Nombre de la aplicacion: "app". Se la asignamos al html como nuevo modulo -->
+<html lang="es" ng-app="app">
   <head>
     <meta charset="utf-8" />
-    <title>Titulo</title>
-    <link type="text/css" rel="stylesheet"  href="/api/css/normalizer.min.css"/>
+    <title>Spring Boot and Angular JS</title>
+
+    <link type="text/css" rel="stylesheet"  href="/api/css/normalizer.css"/>
+    <link type="text/css" rel="stylesheet"  href="/ng-css/inicio.css"/>
+    <link type="text/css" rel="stylesheet"  href="/ng-css/info.css"/>
+    <link type="text/css" rel="stylesheet"  href="/ng-css/test-bbdd.css"/>
+
     <script type="text/javascript" src="/api/js/lib/ng-angular.min.js"></script>
     <script type="text/javascript" src='/api/js/lib/ng-angular-route.min.js'></script>
-
-    <script type="text/javascript" src='/api/js/ng-const/ng-const.min.js'></script>
-
-    <script type="text/javascript" src="/api/js/ng-module/ng-module-app.min.js"></script>
-
+    <script type="text/javascript" src='/api/js/ng-const/ng-const.js'></script>
+    <script type="text/javascript" src="/api/js/ng-module/ng-module-app.js"></script>
   </head>
-  <body apploading> 
-     
-    <ul>
-      <li><a href="#!/pagina1">Ir a la pagina 1</a>
-      </li>
-      <li><a href="#!/pagina2">Ir a la pagina 2</a>
-      </li>
-    </ul>
+  <body apploading  ng-controller="ng-app-controller-Index">
+    <header id="header">
+      <nav>
+        <ul>
+          <li>
+            <a href="#!/">Inicio</a>
+          </li>
+          <li>
+            <a href="#!/test-bbdd">Test BBDD</a>
+          </li>
+          <li>
+            <a href="#!/kirby">Kirby</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="wrapper"> 
+      <div ng-view></div>
+    </div>
+    <footer id="footer">
+      <a href="#!/info"></a>
+    </footer>
 
-    <div ng-view></div>
-
-    <script type="text/javascript" src="/ng-controller/ng-app-controller-template1.js"></script>
-    <script type="text/javascript" src="/ng-controller/ng-app-controller-template2.js"></script>
+    <script type="text/javascript" src="/ng-controller/ng-app-controller-Index.js"></script>
+    <script type="text/javascript" src="/ng-controller/ng-app-controller-test-bbdd.js"></script>
   </body>
 </html>

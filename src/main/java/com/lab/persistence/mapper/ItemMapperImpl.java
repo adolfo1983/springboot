@@ -28,7 +28,8 @@ public class ItemMapperImpl implements ItemMapper {
          * CONECTANDO A LA BBDD.
          */
         db.conecta();
-
+        
+        
         String sql = "SELECT * from items where (nombre like '%" + obj.getNombre() + "%')" ;
 
         ResultSet rs = db.consulta(sql);
@@ -38,7 +39,7 @@ public class ItemMapperImpl implements ItemMapper {
             articulo.setId(rs.getInt("id"));
             articulo.setNombre(rs.getString("nombre"));
             articulo.setDescripcion(rs.getString("descripcion"));
-            articulo.setNombre(rs.getString("url"));
+            articulo.setUrl(rs.getString("url"));
             
             System.out.println(articulo.getNombre());
             System.out.println(articulo.getDescripcion());

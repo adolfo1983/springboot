@@ -5,11 +5,11 @@
 
 
 
-    <div id="article">
+    <div id="articles">
         <div ng-repeat="x in spring track by $index">
             <figure style="background-image: url('{{x.url}}')"></figure>
             <div><h1>{{x.nombre}}</h1></div>
-            <div> {{x.descripcion}}</div>
+            <div> <p>{{x.descripcion}}</p></div>
         </div>
     </div>
 </div>

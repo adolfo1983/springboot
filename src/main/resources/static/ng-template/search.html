@@ -1,0 +1,15 @@
+<div id="cuadro">
+    <div id="lupa">
+        <input type="text" placeholder="Introduzca ítem" ng-keyup="searchArt($evento)" />
+    </div>
+
+
+
+    <div id="article">
+        <div ng-repeat="x in spring track by $index">
+            <figure style="background-image: url('{{x.url}}')"></figure>
+            <div><h1>{{x.nombre}}</h1></div>
+            <div> {{x.descripcion}}</div>
+        </div>
+    </div>
+</div>

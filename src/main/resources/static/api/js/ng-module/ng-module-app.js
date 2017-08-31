@@ -33,6 +33,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
                         {
                             templateUrl: GBL_COFG.urlTemplate('kirby.html'),
                             //controller: 'ng-app-controller-template2'
+                        })
+                        
+                .when('/search',
+                        {
+                            templateUrl: GBL_COFG.urlTemplate('search.html'),
+                            controller: 'ng-app-controller-search'
                         });
     }]);
 

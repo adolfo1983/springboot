@@ -40,6 +40,10 @@ public class ItemMapperImpl implements ItemMapper {
             articulo.setDescripcion(rs.getString("descripcion"));
             articulo.setNombre(rs.getString("url"));
             
+            System.out.println(articulo.getNombre());
+            System.out.println(articulo.getDescripcion());
+            
+            
             x.add(articulo);
         }
 

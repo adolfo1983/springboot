@@ -35,10 +35,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
                             //controller: 'ng-app-controller-template2'
                         })
                         
-                .when('/search',
+                .when('/searchItem',
                         {
                             templateUrl: GBL_COFG.urlTemplate('search.html'),
-                            controller: 'ng-app-controller-search'
+                            controller: 'ng-app-controller-Search'
                         });
     }]);
 

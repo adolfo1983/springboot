@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ItemService
 {
-  public List<ItemModel> ItemService(ItemModel obj) throws Exception;
+  public List<ItemModel> itemService(ItemModel obj) throws Exception;
 }

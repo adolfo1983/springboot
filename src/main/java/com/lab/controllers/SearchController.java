@@ -27,7 +27,8 @@ public class SearchController
                   produces = MediaType.APPLICATION_JSON_VALUE)
   public List<ItemModel> test(@RequestBody ItemModel obj) throws Exception
   {   
-    List<ItemModel> x = iService.ItemService(obj);
+    List<ItemModel> x = iService.itemService(obj);
+    
 
     return x;
   }

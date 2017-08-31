@@ -16,9 +16,9 @@ public class ItemServiceImpl implements ItemService
 
 
   @Override
-  public List<ItemModel> ItemService(ItemModel obj) throws Exception
+  public List<ItemModel> itemService(ItemModel obj) throws Exception
   {
-    List<ItemModel> x = iMapper.ItemMapper(obj);
+    List<ItemModel> x = iMapper.itemMapper(obj);
 
     return x;
   }

@@ -20,7 +20,7 @@ public class ItemMapperImpl implements ItemMapper {
     BBDD db;
 
     @Override
-    public List<ItemModel> ItemMapper(ItemModel obj) throws Exception {
+    public List<ItemModel> itemMapper(ItemModel obj) throws Exception {
 
         List<ItemModel> x = new ArrayList<>();
 

@@ -25,7 +25,7 @@ app.controller('ng-app-controller-Search',
                                 {
                                     var data = response.data;
 
-                                    $scope.articles = data;
+                                    $scope.items = data;
                                 });
 
                     }, timer.search.ms);

@@ -6,8 +6,8 @@
 
 
     <div id="articles">
-        <div ng-repeat="x in spring track by $index">
-            <figure style="background-image: url('{{x.url}}')"></figure>
+        <div ng-repeat="x in items track by $index" name="item-{{x.id}}">
+            <figure style="background-image: url('{{x.url}}');"></figure>
             <div><h1>{{x.nombre}}</h1></div>
             <div> <p>{{x.descripcion}}</p></div>
         </div>

@@ -1,35 +1,43 @@
 app.controller('ng-app-controller-Search',
-        ['$scope', '$http', '$timeout', function ($scope, $http, $timeout)
-            {
-                var timer =
-                        {
-                            search:
-                                    {
-                                        id: null,
-                                        ms: 750
-                                    }
-                        };
-
-                $scope.searchArt = function (e)
+['$scope', '$http', '$timeout', function ($scope, $http, $timeout)
+{
+var timer =
+{
+search:
+{
+id: null,
+        ms: 750
+}
+};
+        (function()
+        {
+        $http.post('/searchItem', {})
+                .then(function (response)
                 {
-                    var value = e.target.value;
-
-                    $timeout.cancel(timer.search.id);
-                    timer.search.id = $timeout(function ()
-                    {
+                var data = response.data;
+                        $scope.items = data;
+                });
+            });
+                
+        
+        $scope.searchArt = function (e)
+                {
+                var value = e.target.value;
+                        $timeout.cancel(timer.search.id);
+                        timer.search.id = $timeout(function ()
+                        {
                         $http.post('/searchItem',
-                                {
-                                    nombre: value
-                                })
+                        {
+                        nombre: value
+                        })
                                 .then(function (response)
                                 {
-                                    var data = response.data;
-
-                                    $scope.items = data;
+                                var data = response.data;
+                                        $scope.items = data;
+                                        $scope.contador = data.length;
                                 });
-
-                    }, timer.search.ms);
+                        }, timer.search.ms);
                 };
-
-            }]);
+        }]
+        );
 

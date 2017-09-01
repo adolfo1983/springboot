@@ -34,6 +34,19 @@
     background-color: transparent; 
 }
 
+#cuadro #lupa > div span
+{
+  font-size: 0.8rem;
+  color: rgba(50, 50, 50, 0.7);
+  font-weight: bold;
+}
+
+#cuadro #lupa > div span.notFound
+{
+  color: rgba(245, 50, 50, 1);
+  
+}
+
 #cuadro #lupa::before
 {
     content: '';

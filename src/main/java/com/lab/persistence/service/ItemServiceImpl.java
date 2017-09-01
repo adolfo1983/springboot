@@ -22,5 +22,13 @@ public class ItemServiceImpl implements ItemService
 
     return x;
   }
+  
+  @Override
+  public List<ItemModel> getItemService(ItemModel obj) throws Exception
+  {
+    List<ItemModel> x = iMapper.getItemMapper(obj);
+
+    return x;
+  }
 
 }

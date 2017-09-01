@@ -55,4 +55,36 @@ public class ItemMapperImpl implements ItemMapper {
 
     return x ;
 }
+    
+    @Override
+    public List<ItemModel> getItemMapper(ItemModel obj) throws Exception {
+
+        List<ItemModel> lista = new ArrayList<>();
+        
+        db.conecta();
+        
+        
+        String sql2 = "SELECT * from items" ;
+        
+        ResultSet rs2 = db.consulta(sql2);
+        while (rs2.next()) {
+            ItemModel articulo2 = new ItemModel();
+            
+            articulo2.setId(rs2.getInt("id"));
+            articulo2.setNombre(rs2.getString("nombre"));
+            articulo2.setDescripcion(rs2.getString("descripcion"));
+            articulo2.setUrl(rs2.getString("url"));
+            
+            System.out.println(articulo2.getNombre());
+            System.out.println(articulo2.getDescripcion());
+            
+            
+            lista.add(articulo2);
+            
+        }
+        db.desconecta ();
+
+        return lista ;
+    }
+        
 }

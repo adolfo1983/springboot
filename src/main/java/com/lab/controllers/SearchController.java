@@ -33,4 +33,15 @@ public class SearchController
     return x;
   }
 
+  @ResponseBody
+  @RequestMapping(value = "/getItem",
+                  method = RequestMethod.POST,
+                  produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<ItemModel> get(@RequestBody ItemModel obj) throws Exception
+  {   
+    List<ItemModel> x = iService.getItemService(obj);
+    
+
+    return x;
+  }
 }

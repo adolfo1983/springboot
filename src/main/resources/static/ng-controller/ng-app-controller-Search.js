@@ -11,13 +11,15 @@ app.controller('ng-app-controller-Search',
                         };
                 (function ()
                 {
+                    
                     $http.post('/getItem', {})
                             .then(function (response)
                             {
                                 var data = response.data;
                                 $scope.items = data;
+                                
                             });
-                });
+                })();
 
 
                 $scope.searchArt = function (e)

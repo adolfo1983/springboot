@@ -22,69 +22,38 @@ public class ItemMapperImpl implements ItemMapper {
     @Override
     public List<ItemModel> itemMapper(ItemModel obj) throws Exception {
 
-        List<ItemModel> x = new ArrayList<>();
-
-        /**
-         * CONECTANDO A LA BBDD.
-         */
-        db.conecta();
-        
-        
-        String sql = "SELECT * from items where (nombre like '%" + obj.getNombre() + "%')" ;
-
-        ResultSet rs = db.consulta(sql);
-        while (rs.next()) {
-            ItemModel articulo = new ItemModel();
-            
-            articulo.setId(rs.getInt("id"));
-            articulo.setNombre(rs.getString("nombre"));
-            articulo.setDescripcion(rs.getString("descripcion"));
-            articulo.setUrl(rs.getString("url"));
-            
-            System.out.println(articulo.getNombre());
-            System.out.println(articulo.getDescripcion());
-            
-            
-            x.add(articulo);
-        }
-
-    /**
-     * DESCONECTANDO A LA BBDD.
-     */
-    db.desconecta ();
-
-    return x ;
+        return this.addItemModel("SELECT * from items where (nombre like '%" + obj.getNombre() + "%')");
 }
     
     @Override
     public List<ItemModel> getItemMapper(ItemModel obj) throws Exception {
 
-        List<ItemModel> lista = new ArrayList<>();
-        
-        db.conecta();
-        
-        
-        String sql2 = "SELECT * from items" ;
-        
-        ResultSet rs2 = db.consulta(sql2);
-        while (rs2.next()) {
-            ItemModel articulo2 = new ItemModel();
-            
-            articulo2.setId(rs2.getInt("id"));
-            articulo2.setNombre(rs2.getString("nombre"));
-            articulo2.setDescripcion(rs2.getString("descripcion"));
-            articulo2.setUrl(rs2.getString("url"));
-            
-            System.out.println(articulo2.getNombre());
-            System.out.println(articulo2.getDescripcion());
-            
-            
-            lista.add(articulo2);
-            
-        }
-        db.desconecta ();
-
-        return lista ;
+        return this.addItemModel("SELECT * from items");
     }
-        
+     
+    
+    private List<ItemModel> addItemModel(String sql) throws Exception
+  {
+    List<ItemModel> listaItems = new ArrayList<>();
+
+    db.conecta();
+
+    ResultSet rs = db.consulta(sql);
+    while (rs.next())
+    {
+      ItemModel item = new ItemModel();
+
+      item.setId(rs.getInt("id"));
+      item.setNombre(rs.getString("nombre"));
+      item.setDescripcion(rs.getString("descripcion"));
+      item.setUrl(rs.getString("url"));
+
+      listaItems.add(item);
+    }
+
+    db.desconecta();
+
+    return listaItems;
+  }
+
 }

@@ -1,6 +1,7 @@
 app.controller('ng-app-controller-Search',
         ['$scope', '$http', '$timeout', function ($scope, $http, $timeout)
             {
+                var respuestas= 0;
                 var timer =
                         {
                             search:
@@ -9,15 +10,18 @@ app.controller('ng-app-controller-Search',
                                         ms: 750
                                     }
                         };
+
+           
+                        
                 (function ()
                 {
-                    
+
                     $http.post('/getItem', {})
                             .then(function (response)
                             {
                                 var data = response.data;
                                 $scope.items = data;
-                                
+
                             });
                 })();
 
@@ -34,9 +38,18 @@ app.controller('ng-app-controller-Search',
                                 })
                                 .then(function (response)
                                 {
+                                    respuestas++;
+                                    $scope.resp = respuestas;
                                     var data = response.data;
-                                    $scope.items = data;
+                                    if(data.length > 0)
+                                    {
+                                     $scope.items = data;   
+                                    }
+                                    
                                     $scope.contador = data.length;
+                                    
+                                    
+                                    
                                 });
                     }, timer.search.ms);
                 };

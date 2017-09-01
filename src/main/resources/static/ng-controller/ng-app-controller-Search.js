@@ -11,10 +11,10 @@ id: null,
 };
         (function()
         {
-        $http.post('/searchItem', {})
+        $http.post('/getItem', {})
                 .then(function (response)
                 {
-                var data = response.data;
+                        var data = response.data;
                         $scope.items = data;
                 });
             });

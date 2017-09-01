@@ -96,7 +96,12 @@
     clear: both;
     width: 100%;
     padding: 20px;
-    display: flex;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
 }
 
 @media all and (max-width: 767px)
@@ -141,7 +146,7 @@
   }
 }
 
-#cuadro #articles div > *
+#cuadro #articles div > section
 {
     float: left;
     padding: 0px;
@@ -150,7 +155,7 @@
     /*overflow: hidden;*/
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid rgba(50, 50, 50, 0.2);
-    box-shadow:  1px 1px 2px rgba(50, 50, 50, 0.25);
+    /*box-shadow:  1px 1px 2px rgba(50, 50, 50, 0.25);*/
 }
 
 #cuadro #articles div > * > figure
@@ -211,6 +216,9 @@
 {
     text-transform: uppercase;
     border-bottom: 1px solid rgba(50, 50, 50, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #cuadro #articles div > * > div p

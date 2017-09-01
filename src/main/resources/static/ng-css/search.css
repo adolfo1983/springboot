@@ -128,7 +128,7 @@
 {
     text-align: justify;
     line-height: 1.4rem;
-    overflow: hidden;
+    overflow: auto;
     max-height: 50px;
 }
 

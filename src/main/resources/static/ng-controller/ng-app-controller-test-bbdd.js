@@ -4,22 +4,32 @@ app.controller('ng-app-controller-test-bbdd', ['$scope', '$http', '$timeout', 'u
         $scope.testOk = false;
         
         $scope.test = function(){
+             utilFactory.setContTestBBDD(utilFactory.getContTestBBDD() + 1);
         $http.post('/test',
                 {
                     table: 'hello'
                 })
                 .then(function (response)
-                {
-                    var data = response.data;
-                    
-                    $scope.spring = data;
-                    $scope.testOk = true;
-                    
-                    $timeout(function()
-                    {
-                     $scope.testOk = false;   
-                    }, 3000);
+      {
+        scopeTest(response.data);
+      });
+    };
 
-                });
-            };
-    }]);
+
+    /**************************************************************************
+     * 
+     * PRIVATE FUNCTIONS
+     * 
+     **************************************************************************/
+    function scopeTest(data)
+    {
+      $scope.testOk = true;
+      $scope.bbdd = data;
+
+      $timeout(function ()
+      {
+        $scope.testOk = false;
+      }, 5000);
+    }
+
+  }]);

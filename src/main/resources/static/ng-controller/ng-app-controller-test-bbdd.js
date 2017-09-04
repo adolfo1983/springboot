@@ -24,7 +24,7 @@ app.controller('ng-app-controller-test-bbdd', ['$scope', '$http', '$timeout', 'u
     function scopeTest(data)
     {
       $scope.testOk = true;
-      $scope.bbdd = data;
+      $scope.spring = data;
 
       $timeout(function ()
       {

@@ -32,6 +32,7 @@ app.controller('ng-app-controller-Search',
                     $timeout.cancel(timer.search.id);
                     timer.search.id = $timeout(function ()
                     {
+                        utilFactory.setContSearchItems(utilFactory.getContSearchItems() + 1);
                         $http.post('/searchItem',
                                 {
                                     nombre: value

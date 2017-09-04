@@ -14,7 +14,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
                 .when('/', //Carga la URL con el template y el controlador asociado
                         {
                             templateUrl: GBL_COFG.urlTemplate('inicio.html'),
-                            //controller: 'ng-app-controller-Index'
+                            controller: 'ng-app-controller-Index'
                         })
 
                 .when('/info',
@@ -31,7 +31,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
                 )
                 .when('/kirby',
                         {
-                            templateUrl: GBL_COFG.urlTemplate('kirby.html'),
+                            templateUrl: GBL_COFG.urlTemplate('kirby.html')
                             //controller: 'ng-app-controller-template2'
                         })
                         

@@ -20,7 +20,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
                 .when('/info',
                         {
                             templateUrl: GBL_COFG.urlTemplate('info.html'),
-                            //controller: 'ng-app-controller-template2'
+                            controller: 'ngAppControllerAbout'
                         })
 
                 .when('/test-bbdd',

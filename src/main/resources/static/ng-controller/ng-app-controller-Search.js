@@ -1,5 +1,5 @@
 app.controller('ng-app-controller-Search',
-        ['$scope', '$http', '$timeout', function ($scope, $http, $timeout)
+        ['$scope', '$http', '$timeout', 'utilFactory', function ($scope, $http, $timeout, utilFactory)
             {
                 var respuestas= 0;
                 var timer =

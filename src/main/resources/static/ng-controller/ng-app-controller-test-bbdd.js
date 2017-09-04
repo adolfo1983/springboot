@@ -1,5 +1,5 @@
-app.controller('ng-app-controller-test-bbdd', ["$scope", "$http", "$timeout",
-    function ($scope, $http, $timeout)
+app.controller('ng-app-controller-test-bbdd', ['$scope', '$http', '$timeout', 'utilFactory',
+    function ($scope, $http, $timeout, utilFactory)
     {
         $scope.testOk = false;
         

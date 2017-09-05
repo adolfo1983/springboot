@@ -14,11 +14,23 @@ public class ItemServiceImpl implements ItemService
   @Autowired
   ItemMapper iMapper;
 
+  public static boolean isNumeric(String str) {
+        return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("")==false);
+    }
 
   @Override
   public List<ItemModel> itemService(ItemModel obj) throws Exception
   {
-    List<ItemModel> x = iMapper.itemMapper(obj);
+    List<ItemModel> x = null;
+    if (isNumeric(obj.getNombre()))
+            {
+                x = iMapper.PesoItemMapper(obj);
+            } else 
+                {
+                    x = iMapper.itemMapper(obj);
+                }
+    
+    
 
     return x;
   }

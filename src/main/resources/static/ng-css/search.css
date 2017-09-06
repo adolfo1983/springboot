@@ -229,3 +229,10 @@
    
 }
 
+#cuadro #articles div > * > div h1 span.resalto{
+    color: red;
+}
+
+#cuadro #articles div > * > div p span.resalto{
+    color: red;
+}

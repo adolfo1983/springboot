@@ -1,7 +1,7 @@
 app.controller('ng-app-controller-Search',
         ['$scope', '$http', '$timeout', 'utilFactory', function ($scope, $http, $timeout, utilFactory)
             {
-                var respuestas= 0;
+                var respuestas = 0;
                 var timer =
                         {
                             search:
@@ -11,8 +11,8 @@ app.controller('ng-app-controller-Search',
                                     }
                         };
 
-           
-                        
+
+
                 (function ()
                 {
 
@@ -28,12 +28,30 @@ app.controller('ng-app-controller-Search',
 
                 $scope.searchArt = function (e)
                 {
+                    function isNumeric(str) {
+                        var ruta = '';
+                        if (str === '')
+                        {
+                            ruta = '/searchItem';
+                        } else {
+                            ruta = isNaN(str) ? '/searchItem' : '/searchPesoItem';
+                        }
+                        return ruta;
+                    }
+
+
+
                     var value = e.target.value;
+                    var ruta = isNumeric(value);
+
+                    console.log(isNumeric(value));
+
                     $timeout.cancel(timer.search.id);
                     timer.search.id = $timeout(function ()
                     {
+
                         utilFactory.setContSearchItems(utilFactory.getContSearchItems() + 1);
-                        $http.post('/searchItem',
+                        $http.post(ruta,
                                 {
                                     nombre: value
                                 })
@@ -42,15 +60,15 @@ app.controller('ng-app-controller-Search',
                                     respuestas++;
                                     $scope.resp = respuestas;
                                     var data = response.data;
-                                    if(data.length > 0)
+                                    if (data.length > 0)
                                     {
-                                     $scope.items = data;   
+                                        $scope.items = data;
                                     }
-                                    
+
                                     $scope.contador = data.length;
-                                    
-                                    
-                                    
+
+
+
                                 });
                     }, timer.search.ms);
                 };

@@ -14,25 +14,24 @@ public class ItemServiceImpl implements ItemService
   @Autowired
   ItemMapper iMapper;
 
-  public static boolean isNumeric(String str) {
-        return (str.matches("[+-]?\\d*(\\.\\d+)?") && str.equals("")==false);
-    }
 
   @Override
   public List<ItemModel> itemService(ItemModel obj) throws Exception
   {
-    List<ItemModel> x = null;
-    if (isNumeric(obj.getNombre()))
-            {
-                x = iMapper.PesoItemMapper(obj);
-            } else 
-                {
-                    x = iMapper.itemMapper(obj);
-                }
     
+    List<ItemModel> x = iMapper.itemMapper(obj);
+    List<ItemModel> lista = this.replace(obj,x);
+    return lista;
+  }
+  
+  @Override
+  public List<ItemModel> pesoItemService(ItemModel obj) throws Exception
+  {
     
-
-    return x;
+    List<ItemModel> x = iMapper.pesoItemMapper(obj);
+    
+      List<ItemModel> lista = this.replace(obj,x);
+    return lista;
   }
   
   @Override
@@ -42,5 +41,15 @@ public class ItemServiceImpl implements ItemService
 
     return x;
   }
+
+    private List<ItemModel> replace(ItemModel obj, List<ItemModel> x) {
+        for (int i = 0; i < x.size(); i++) {
+           x.get(i).setNombre( x.get(i).getNombre().replace(obj.getNombre(), "<span class=\"resalto\" >" + obj.getNombre() + "</span>"));
+           x.get(i).setDescripcion(x.get(i).getDescripcion().replace(obj.getNombre(), "<span class=\"resalto\" >" + obj.getNombre() + "</span>"));
+            
+        }
+        
+        return x;
+    }
 
 }

@@ -23,51 +23,50 @@ public class ItemMapperImpl implements ItemMapper {
     public List<ItemModel> itemMapper(ItemModel obj) throws Exception {
 
         return this.addItemModel("SELECT * "
-                                 + "FROM items "
-                                 + "where (nombre like '%" + obj.getNombre() + "%')"
-                                 + "OR (descripcion like '%" + obj.getNombre() + "%')");
-}
-    
+                + "FROM items "
+                + "where (nombre like '%" + obj.getNombre() + "%')"
+                + "OR (descripcion like '%" + obj.getNombre() + "%')");
+    }
+
     @Override
-    public List<ItemModel> PesoItemMapper(ItemModel obj) throws Exception {
+    public List<ItemModel> pesoItemMapper(ItemModel obj) throws Exception {
 
         return this.addItemModel("SELECT * "
-                                 + "FROM items "
-                                 + "JOIN pesoitems"
-                                 + "ON items.id = pesoitems.iditem"
-                                 + "where peso = " + obj.getNombre());
-                                 
-}
-    
+                + "FROM items "
+                + "WHERE id "
+                + "IN (SELECT iditem "
+                + "FROM pesoitems "
+                + "WHERE peso = " + obj.getNombre() + ")");
+
+    }
+
     @Override
     public List<ItemModel> getItemMapper(ItemModel obj) throws Exception {
 
         return this.addItemModel("SELECT * from items");
     }
-     
-    
-    private List<ItemModel> addItemModel(String sql) throws Exception
-  {
-    List<ItemModel> listaItems = new ArrayList<>();
 
-    db.conecta();
+    private List<ItemModel> addItemModel(String sql) throws Exception {
+        List<ItemModel> listaItems = new ArrayList<>();
 
-    ResultSet rs = db.consulta(sql);
-    while (rs.next())
-    {
-      ItemModel item = new ItemModel();
+        db.conecta();
+        System.out.println(sql);
+        ResultSet rs = db.consulta(sql);
+        
+        while (rs.next()) {
+            ItemModel item = new ItemModel();
 
-      item.setId(rs.getInt("id"));
-      item.setNombre(rs.getString("nombre"));
-      item.setDescripcion(rs.getString("descripcion"));
-      item.setUrl(rs.getString("url"));
+            item.setId(rs.getInt("id"));
+            item.setNombre(rs.getString("nombre"));
+            item.setDescripcion(rs.getString("descripcion"));
+            item.setUrl(rs.getString("url"));
 
-      listaItems.add(item);
+            listaItems.add(item);
+        }
+
+        db.desconecta();
+
+        return listaItems;
     }
-
-    db.desconecta();
-
-    return listaItems;
-  }
 
 }

@@ -32,6 +32,18 @@ public class SearchController
 
     return x;
   }
+  
+   @ResponseBody
+  @RequestMapping(value = "/searchPesoItem",
+                  method = RequestMethod.POST,
+                  produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<ItemModel> peso(@RequestBody ItemModel obj) throws Exception
+  {   
+    List<ItemModel> x = iService.pesoItemService(obj);
+    
+
+    return x;
+  }
 
   @ResponseBody
   @RequestMapping(value = "/getItem",

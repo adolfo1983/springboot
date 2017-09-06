@@ -7,6 +7,7 @@ import java.util.List;
 public interface ItemService
 {
   public List<ItemModel> itemService(ItemModel obj) throws Exception;
+  public List<ItemModel> pesoItemService(ItemModel obj) throws Exception;
   
    public List<ItemModel> getItemService(ItemModel obj) throws Exception;
 }

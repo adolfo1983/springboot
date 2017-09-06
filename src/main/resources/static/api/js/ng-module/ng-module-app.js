@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']); //Hace referencia al "app" del index
+var app = angular.module('app', ['ngRoute', 'ngSanitize']); //Hace referencia al "app" del index
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
             $locationProvider)
